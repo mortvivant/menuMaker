@@ -5,10 +5,7 @@ import com.example.menumaker.business.requests.CreateBeverageRequest;
 import com.example.menumaker.business.requests.CreateDessertRequest;
 import com.example.menumaker.business.requests.CreateMainCourseRequest;
 import com.example.menumaker.business.requests.CreateSoupRequest;
-import com.example.menumaker.business.responses.GetAllBeveragesResponse;
-import com.example.menumaker.business.responses.GetAllDessertsResponse;
-import com.example.menumaker.business.responses.GetAllMainCoursesResponse;
-import com.example.menumaker.business.responses.GetAllSoupsResponse;
+import com.example.menumaker.business.responses.*;
 import com.example.menumaker.entities.concretes.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,6 +46,26 @@ public class MenusController {
     @GetMapping("/getMaincourses")
     public List<GetAllMainCoursesResponse> getAllMainCourses(){
         return service.getAllMainCourse();
+    }
+
+    @GetMapping("/getSoup")
+    public GetRandomSoupResponse getSoup(){
+        return service.getSoup();
+    }
+
+    @GetMapping("/getMainCourse")
+    public GetRandomMainCourseResponse getMainCourse(){
+        return service.getMainCourse();
+    }
+
+    @GetMapping("/getDessert")
+    public GetRandomDessertResponse getDessert(){
+        return service.getDessert();
+    }
+
+    @GetMapping("/getBeverage")
+    public GetRandomBeverageResponse getBeverage(){
+        return service.getBeverage();
     }
 
     @PostMapping("/addSoup")

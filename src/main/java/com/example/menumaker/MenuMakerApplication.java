@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class MenumakerApplication {
+public class MenuMakerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MenumakerApplication.class, args);
+        SpringApplication.run(MenuMakerApplication.class, args);
     }
 
 

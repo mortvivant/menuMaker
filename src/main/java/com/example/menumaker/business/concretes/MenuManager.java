@@ -5,10 +5,7 @@ import com.example.menumaker.business.requests.CreateBeverageRequest;
 import com.example.menumaker.business.requests.CreateDessertRequest;
 import com.example.menumaker.business.requests.CreateMainCourseRequest;
 import com.example.menumaker.business.requests.CreateSoupRequest;
-import com.example.menumaker.business.responses.GetAllBeveragesResponse;
-import com.example.menumaker.business.responses.GetAllDessertsResponse;
-import com.example.menumaker.business.responses.GetAllMainCoursesResponse;
-import com.example.menumaker.business.responses.GetAllSoupsResponse;
+import com.example.menumaker.business.responses.*;
 import com.example.menumaker.core.utilities.mappers.ModelMapperService;
 import com.example.menumaker.dataAccess.abstracts.BeverageRepository;
 import com.example.menumaker.dataAccess.abstracts.DessertRepository;
@@ -40,7 +37,11 @@ public class MenuManager implements MenuService {
 
     @Override
     public Menu getMenu() {
-        return new Menu(getSoup(),getMainCourse(),getDessert(),getBeverage());
+        Soup soup = this.modelMapperService.forResponse().map(getSoup(),Soup.class);
+        MainCourse mainCourse = this.modelMapperService.forResponse().map(getMainCourse(),MainCourse.class);
+        Dessert dessert = this.modelMapperService.forResponse().map(getDessert(),Dessert.class);
+        Beverage beverage = this.modelMapperService.forResponse().map(getBeverage(),Beverage.class);
+        return new Menu(soup,mainCourse,dessert,beverage);
     }
 
     @Override
@@ -103,28 +104,44 @@ public class MenuManager implements MenuService {
         return dessertsResponses;
     }
 
-    private Soup getSoup(){
+    @Override
+    public GetRandomSoupResponse getSoup(){
         List<Soup> soups = soupRepository.findAll();
         int number = random.nextInt(soups.size());
-        return soups.get(number);
+        Soup soup = soups.get(number);
+        GetRandomSoupResponse soupResponse = new GetRandomSoupResponse();
+        this.modelMapperService.forResponse().map(soup,GetRandomSoupResponse.class);
+        return soupResponse;
     }
 
-    private MainCourse getMainCourse(){
+    @Override
+    public GetRandomMainCourseResponse getMainCourse(){
         List<MainCourse> mainCourses = mainCourseRepository.findAll();
         int number = random.nextInt(mainCourses.size());
-        return mainCourses.get(number);
+        MainCourse mainCourse = mainCourses.get(number);
+        GetRandomMainCourseResponse mainCourseResponse = new GetRandomMainCourseResponse();
+        this.modelMapperService.forResponse().map(mainCourse,GetRandomMainCourseResponse.class);
+        return mainCourseResponse;
     }
 
-    private Dessert getDessert(){
+    @Override
+    public GetRandomDessertResponse getDessert(){
         List<Dessert> desserts = dessertRepository.findAll();
         int number = random.nextInt(desserts.size());
-        return desserts.get(number);
+        Dessert dessert = desserts.get(number);
+        GetRandomDessertResponse dessertResponse = new GetRandomDessertResponse();
+        this.modelMapperService.forResponse().map(dessert,GetRandomDessertResponse.class);
+        return dessertResponse;
     }
 
-    private Beverage getBeverage(){
+    @Override
+    public GetRandomBeverageResponse getBeverage(){
         List<Beverage> beverages = beverageRepository.findAll();
         int number = random.nextInt(beverages.size());
-        return beverages.get(number);
+        Beverage beverage = beverages.get(number);
+        GetRandomBeverageResponse beverageResponse = new GetRandomBeverageResponse();
+        this.modelMapperService.forResponse().map(beverage,GetRandomBeverageResponse.class);
+        return beverageResponse;
     }
 
 
