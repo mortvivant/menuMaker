@@ -1,13 +1,15 @@
 package com.example.menumaker.webApi.controllers;
 
-import com.example.menumaker.business.abstracts.MenuService;
+import com.example.menumaker.business.abstracts.BeverageService;
+import com.example.menumaker.business.abstracts.DessertService;
+import com.example.menumaker.business.abstracts.MainCourseService;
+import com.example.menumaker.business.abstracts.SoupService;
 import com.example.menumaker.business.requests.CreateBeverageRequest;
 import com.example.menumaker.business.requests.CreateDessertRequest;
 import com.example.menumaker.business.requests.CreateMainCourseRequest;
 import com.example.menumaker.business.requests.CreateSoupRequest;
 import com.example.menumaker.business.responses.*;
-import com.example.menumaker.entities.concretes.Menu;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,81 +17,81 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api")
+@AllArgsConstructor
 public class MenusController {
-    private MenuService service;
+    private SoupService soupService;
+    private MainCourseService mainCourseService;
+    private DessertService dessertService;
+    private BeverageService beverageService;
 
-    @Autowired
-    public MenusController(MenuService service) {
-        this.service = service;
-    }
+//
+//    @GetMapping("/getmenu")
+//    public Menu getMenu(){
+//        return service.getMenu();
+//    }
 
-    @GetMapping("/getmenu")
-    public Menu getMenu(){
-        return service.getMenu();
-    }
-
-    @GetMapping("/getSoups")
+    @GetMapping("/getsoups")
     public List<GetAllSoupsResponse> getAllSoups(){
-        return service.getAllSoups();
+        return soupService.getAllSoups();
     }
 
-    @GetMapping("/getDeverages")
+    @GetMapping("/getbeverages")
     public List<GetAllBeveragesResponse> getAllBeverages(){
-        return service.getAllBeverages();
+        return beverageService.getAllBeverages();
     }
 
-    @GetMapping("/getDesserts")
+    @GetMapping("/getdesserts")
     public List<GetAllDessertsResponse> getAllDesserts(){
-        return service.getAllDesserts();
+        return dessertService.getAllDesserts();
     }
 
-    @GetMapping("/getMaincourses")
+    @GetMapping("/getmaincourses")
     public List<GetAllMainCoursesResponse> getAllMainCourses(){
-        return service.getAllMainCourse();
+        return mainCourseService.getAllMainCourse();
     }
 
-    @GetMapping("/getSoup")
+    @GetMapping("/getsoup")
     public GetRandomSoupResponse getSoup(){
-        return service.getSoup();
+        return soupService.getSoup();
     }
 
-    @GetMapping("/getMainCourse")
+    @GetMapping("/getmaincourse")
     public GetRandomMainCourseResponse getMainCourse(){
-        return service.getMainCourse();
+        return mainCourseService.getMainCourse();
     }
 
-    @GetMapping("/getDessert")
+    @GetMapping("/getdessert")
     public GetRandomDessertResponse getDessert(){
-        return service.getDessert();
+        return dessertService.getDessert();
     }
 
-    @GetMapping("/getBeverage")
+    @GetMapping("/getbeverage")
     public GetRandomBeverageResponse getBeverage(){
-        return service.getBeverage();
+        return beverageService.getBeverage();
     }
 
-    @PostMapping("/addSoup")
+    @PostMapping("/addsoup")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void addSoup(CreateSoupRequest createSoupRequest){
-        this.service.addSoup(createSoupRequest);
+        this.soupService.addSoup(createSoupRequest);
     }
 
-    @PostMapping("/addMaincourse")
+    @PostMapping("/addmaincourse")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void addMainCourse(CreateMainCourseRequest createMainCourseRequest){
-        this.service.addMainCourse(createMainCourseRequest);
+        this.mainCourseService.addMainCourse(createMainCourseRequest);
     }
 
-    @PostMapping("/addDessert")
+    @PostMapping("/adddessert")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void addDessert(CreateDessertRequest createDessertRequest){
-        this.service.addDessert(createDessertRequest);
+        this.dessertService.addDessert(createDessertRequest);
     }
 
-    @PostMapping("/addBeverage")
+    @PostMapping("/addbeverage")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void addBeverage(CreateBeverageRequest createBeverageRequest){
-        this.service.addBeverage(createBeverageRequest);
+        this.beverageService.addBeverage(createBeverageRequest);
     }
 
 }

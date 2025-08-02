@@ -12,7 +12,6 @@ public class MenuMakerApplication {
         SpringApplication.run(MenuMakerApplication.class, args);
     }
 
-
     @Bean
     public ModelMapper getModelMapper(){
         return new ModelMapper();
