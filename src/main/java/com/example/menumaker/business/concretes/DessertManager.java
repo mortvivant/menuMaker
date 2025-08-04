@@ -41,8 +41,7 @@ public class DessertManager implements DessertService {
         Random random = new Random();
         int number = random.nextInt(desserts.size());
         Dessert dessert = desserts.get(number);
-        GetRandomDessertResponse dessertResponse = new GetRandomDessertResponse();
-        this.modelMapperService.forResponse().map(dessert,GetRandomDessertResponse.class);
+        GetRandomDessertResponse dessertResponse = this.modelMapperService.forResponse().map(dessert,GetRandomDessertResponse.class);
         return dessertResponse;
     }
 }

@@ -41,8 +41,7 @@ public class BeverageManager implements BeverageService {
         Random random = new Random();
         int number = random.nextInt(beverages.size());
         Beverage beverage = beverages.get(number);
-        GetRandomBeverageResponse beverageResponse = new GetRandomBeverageResponse();
-        this.modelMapperService.forResponse().map(beverage,GetRandomBeverageResponse.class);
+        GetRandomBeverageResponse beverageResponse =  this.modelMapperService.forResponse().map(beverage,GetRandomBeverageResponse.class);
         return beverageResponse;
     }
 

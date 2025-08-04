@@ -1,14 +1,12 @@
 package com.example.menumaker.webApi.controllers;
 
-import com.example.menumaker.business.abstracts.BeverageService;
-import com.example.menumaker.business.abstracts.DessertService;
-import com.example.menumaker.business.abstracts.MainCourseService;
-import com.example.menumaker.business.abstracts.SoupService;
+import com.example.menumaker.business.abstracts.*;
 import com.example.menumaker.business.requests.CreateBeverageRequest;
 import com.example.menumaker.business.requests.CreateDessertRequest;
 import com.example.menumaker.business.requests.CreateMainCourseRequest;
 import com.example.menumaker.business.requests.CreateSoupRequest;
 import com.example.menumaker.business.responses.*;
+import com.example.menumaker.entities.concretes.Menu;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,11 +22,11 @@ public class MenuController {
     private DessertService dessertService;
     private BeverageService beverageService;
 
-//
-//    @GetMapping("/getmenu")
-//    public Menu getMenu(){
-//        return service.getMenu();
-//    }
+    @GetMapping("/getmenu")
+    public Menu getMenu(){
+        Menu menu = new Menu(soupService.getSoup(),mainCourseService.getMainCourse(),dessertService.getDessert(),beverageService.getBeverage());
+        return menu;
+    }
 
     @GetMapping("/getsoups")
     public List<GetAllSoupsResponse> getAllSoups(){

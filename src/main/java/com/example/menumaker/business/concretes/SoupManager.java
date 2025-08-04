@@ -41,8 +41,7 @@ public class SoupManager implements SoupService {
         Random random = new Random();
         int number = random.nextInt(soups.size());
         Soup soup = soups.get(number);
-        GetRandomSoupResponse soupResponse = new GetRandomSoupResponse();
-        this.modelMapperService.forResponse().map(soup,GetRandomSoupResponse.class);
+        GetRandomSoupResponse soupResponse = this.modelMapperService.forResponse().map(soup,GetRandomSoupResponse.class);
         return soupResponse;
     }
 

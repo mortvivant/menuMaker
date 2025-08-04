@@ -18,5 +18,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(dataIntegrityViolationException.getMessage());
     }
 
+    @ExceptionHandler
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    public ResponseEntity<Object> handleInvalidLoginException(RuntimeException runtimeException){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(runtimeException.getMessage());
+    }
+
 
 }

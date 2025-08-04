@@ -1,5 +1,9 @@
 package com.example.menumaker.entities.concretes;
 
+import com.example.menumaker.business.responses.GetRandomBeverageResponse;
+import com.example.menumaker.business.responses.GetRandomDessertResponse;
+import com.example.menumaker.business.responses.GetRandomMainCourseResponse;
+import com.example.menumaker.business.responses.GetRandomSoupResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,9 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Menu {
 
-    private Soup soup;
-    private MainCourse mainCourse;
-    private Dessert dessert;
-    private Beverage beverage;
+    private GetRandomSoupResponse getRandomSoupResponse;
+    private GetRandomMainCourseResponse getRandomMainCourseResponse;
+    private GetRandomDessertResponse getRandomDessertResponse;
+    private GetRandomBeverageResponse getRandomBeverageResponse;
 
 }

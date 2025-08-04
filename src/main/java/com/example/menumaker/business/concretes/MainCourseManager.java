@@ -41,8 +41,7 @@ public class MainCourseManager implements MainCourseService {
         Random random = new Random();
         int number = random.nextInt(mainCourses.size());
         MainCourse mainCourse = mainCourses.get(number);
-        GetRandomMainCourseResponse mainCourseResponse = new GetRandomMainCourseResponse();
-        this.modelMapperService.forResponse().map(mainCourse,GetRandomMainCourseResponse.class);
+        GetRandomMainCourseResponse mainCourseResponse = this.modelMapperService.forResponse().map(mainCourse,GetRandomMainCourseResponse.class);
         return mainCourseResponse;
     }
 }
