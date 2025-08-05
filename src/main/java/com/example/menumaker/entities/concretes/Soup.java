@@ -5,11 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "soup")
+@Table(name = "soups")
 public class Soup {
     @Id
     @Column(name = "id")
@@ -19,4 +21,7 @@ public class Soup {
     private String name;
     @Column(name = "calories")
     private int calories;
+
+    @OneToMany(mappedBy = "soup")
+    private List<Menu> menus;
 }

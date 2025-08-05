@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,4 +22,7 @@ public class Beverage {
     private String name;
     @Column(name = "calories")
     private int calories;
+
+    @OneToMany(mappedBy = "beverage")
+    private List<Menu> menus;
 }

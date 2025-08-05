@@ -2,6 +2,7 @@ package com.example.menumaker.business.concretes;
 
 import com.example.menumaker.business.abstracts.DessertService;
 import com.example.menumaker.business.requests.CreateDessertRequest;
+import com.example.menumaker.business.requests.UpdateDessertRequest;
 import com.example.menumaker.business.responses.GetAllDessertsResponse;
 import com.example.menumaker.business.responses.GetRandomDessertResponse;
 import com.example.menumaker.core.utilities.mappers.ModelMapperService;
@@ -43,5 +44,11 @@ public class DessertManager implements DessertService {
         Dessert dessert = desserts.get(number);
         GetRandomDessertResponse dessertResponse = this.modelMapperService.forResponse().map(dessert,GetRandomDessertResponse.class);
         return dessertResponse;
+    }
+
+    @Override
+    public void updateDessert(UpdateDessertRequest updateDessertRequest) {
+        Dessert dessert = this.modelMapperService.forRequest().map(updateDessertRequest,Dessert.class);
+        this.dessertRepository.save(dessert);
     }
 }

@@ -2,6 +2,7 @@ package com.example.menumaker.business.concretes;
 
 import com.example.menumaker.business.abstracts.MainCourseService;
 import com.example.menumaker.business.requests.CreateMainCourseRequest;
+import com.example.menumaker.business.requests.UpdateMainCourseRequest;
 import com.example.menumaker.business.responses.GetAllMainCoursesResponse;
 import com.example.menumaker.business.responses.GetRandomMainCourseResponse;
 import com.example.menumaker.core.utilities.mappers.ModelMapperService;
@@ -43,5 +44,11 @@ public class MainCourseManager implements MainCourseService {
         MainCourse mainCourse = mainCourses.get(number);
         GetRandomMainCourseResponse mainCourseResponse = this.modelMapperService.forResponse().map(mainCourse,GetRandomMainCourseResponse.class);
         return mainCourseResponse;
+    }
+
+    @Override
+    public void updateMainCourse(UpdateMainCourseRequest updateMainCourseRequest) {
+        MainCourse course = this.modelMapperService.forRequest().map(updateMainCourseRequest,MainCourse.class);
+        this.mainCourseRepository.save(course);
     }
 }

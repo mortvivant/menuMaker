@@ -1,6 +1,7 @@
 package com.example.menumaker.business.abstracts;
 
 import com.example.menumaker.business.requests.CreateSoupRequest;
+import com.example.menumaker.business.requests.UpdateSoupRequest;
 import com.example.menumaker.business.responses.GetAllSoupsResponse;
 import com.example.menumaker.business.responses.GetRandomSoupResponse;
 
@@ -10,4 +11,5 @@ public interface SoupService {
     void addSoup(CreateSoupRequest createSoup);
     GetRandomSoupResponse getSoup();
     List<GetAllSoupsResponse> getAllSoups();
+    void updateSoup(UpdateSoupRequest updateSoupRequest);
 }

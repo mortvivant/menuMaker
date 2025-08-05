@@ -1,6 +1,7 @@
 package com.example.menumaker.business.abstracts;
 
 import com.example.menumaker.business.requests.CreateMainCourseRequest;
+import com.example.menumaker.business.requests.UpdateMainCourseRequest;
 import com.example.menumaker.business.responses.GetAllMainCoursesResponse;
 import com.example.menumaker.business.responses.GetRandomMainCourseResponse;
 
@@ -10,4 +11,5 @@ public interface MainCourseService {
     void addMainCourse(CreateMainCourseRequest createMainCourse);
     List<GetAllMainCoursesResponse> getAllMainCourse();
     GetRandomMainCourseResponse getMainCourse();
+    void updateMainCourse(UpdateMainCourseRequest updateMainCourseRequest);
 }

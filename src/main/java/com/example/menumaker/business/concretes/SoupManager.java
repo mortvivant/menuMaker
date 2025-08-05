@@ -2,6 +2,7 @@ package com.example.menumaker.business.concretes;
 
 import com.example.menumaker.business.abstracts.SoupService;
 import com.example.menumaker.business.requests.CreateSoupRequest;
+import com.example.menumaker.business.requests.UpdateSoupRequest;
 import com.example.menumaker.business.responses.GetAllSoupsResponse;
 import com.example.menumaker.business.responses.GetRandomSoupResponse;
 import com.example.menumaker.core.utilities.mappers.ModelMapperService;
@@ -33,6 +34,12 @@ public class SoupManager implements SoupService {
                 this.modelMapperService.forResponse().map(soup,GetAllSoupsResponse.class)).toList();
 
         return soupsResponses;
+    }
+
+    @Override
+    public void updateSoup(UpdateSoupRequest updateSoupRequest) {
+        Soup soup = this.modelMapperService.forRequest().map(updateSoupRequest,Soup.class);
+        this.soupRepository.save(soup);
     }
 
     @Override
