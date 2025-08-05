@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateMainCourseRequest {
+
     private String name;
-    private int id;
+    private int calories;
 }
