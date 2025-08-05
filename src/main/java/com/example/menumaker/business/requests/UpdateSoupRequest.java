@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateSoupRequest {
-
+    private int id;
     private String name;
     private int calories;
 }

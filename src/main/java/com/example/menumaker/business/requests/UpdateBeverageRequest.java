@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateMainCourseRequest {
+public class UpdateBeverageRequest {
     private int id;
     private String name;
     private int calories;

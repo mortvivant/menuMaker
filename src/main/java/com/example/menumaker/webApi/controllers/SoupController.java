@@ -2,6 +2,7 @@ package com.example.menumaker.webApi.controllers;
 
 import com.example.menumaker.business.abstracts.SoupService;
 import com.example.menumaker.business.requests.CreateSoupRequest;
+import com.example.menumaker.business.requests.UpdateSoupRequest;
 import com.example.menumaker.business.responses.GetAllSoupsResponse;
 import com.example.menumaker.business.responses.GetRandomSoupResponse;
 import lombok.AllArgsConstructor;
@@ -31,5 +32,11 @@ public class SoupController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public void addSoup(CreateSoupRequest createSoupRequest){
         this.soupService.addSoup(createSoupRequest);
+    }
+
+    @PutMapping("/updatesoup")
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
+    public void updateSoup(UpdateSoupRequest updateSoupRequest){
+        this.soupService.updateSoup(updateSoupRequest);
     }
 }

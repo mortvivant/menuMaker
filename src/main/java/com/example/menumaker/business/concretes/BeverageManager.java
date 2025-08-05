@@ -2,6 +2,7 @@ package com.example.menumaker.business.concretes;
 
 import com.example.menumaker.business.abstracts.BeverageService;
 import com.example.menumaker.business.requests.CreateBeverageRequest;
+import com.example.menumaker.business.requests.UpdateBeverageRequest;
 import com.example.menumaker.business.responses.GetAllBeveragesResponse;
 import com.example.menumaker.business.responses.GetRandomBeverageResponse;
 import com.example.menumaker.core.utilities.mappers.ModelMapperService;
@@ -43,6 +44,12 @@ public class BeverageManager implements BeverageService {
         Beverage beverage = beverages.get(number);
         GetRandomBeverageResponse beverageResponse =  this.modelMapperService.forResponse().map(beverage,GetRandomBeverageResponse.class);
         return beverageResponse;
+    }
+
+    @Override
+    public void updateBeverage(UpdateBeverageRequest updateBeverageRequest) {
+        Beverage beverage = this.modelMapperService.forRequest().map(updateBeverageRequest,Beverage.class);
+        this.beverageRepository.save(beverage);
     }
 
 

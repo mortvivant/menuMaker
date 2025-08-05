@@ -1,6 +1,7 @@
 package com.example.menumaker.business.abstracts;
 
 import com.example.menumaker.business.requests.CreateBeverageRequest;
+import com.example.menumaker.business.requests.UpdateBeverageRequest;
 import com.example.menumaker.business.responses.GetAllBeveragesResponse;
 import com.example.menumaker.business.responses.GetRandomBeverageResponse;
 
@@ -10,4 +11,5 @@ public interface BeverageService {
     void addBeverage(CreateBeverageRequest createBeverage);
     List<GetAllBeveragesResponse> getAllBeverages();
     GetRandomBeverageResponse getBeverage();
+    void updateBeverage(UpdateBeverageRequest updateBeverageRequest);
 }
