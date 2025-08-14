@@ -2,6 +2,7 @@ package com.example.menumaker.webApi.controllers;
 
 import com.example.menumaker.business.abstracts.UserService;
 import com.example.menumaker.business.requests.CreateUserRequest;
+import com.example.menumaker.business.requests.UpdateUserRequest;
 import com.example.menumaker.business.requests.UserLogRequest;
 import com.example.menumaker.business.responses.GetUserResponse;
 import lombok.AllArgsConstructor;
@@ -30,5 +31,10 @@ public class UserController {
     @GetMapping("/{id}")
     public GetUserResponse getUser(@PathVariable int id){
         return this.userService.getUser(id);
+    }
+
+    @PutMapping("/updateuser")
+    public ResponseEntity<?> updateUser(@RequestBody UpdateUserRequest updateUserRequest){
+        return this.userService.updateUser(updateUserRequest);
     }
 }
