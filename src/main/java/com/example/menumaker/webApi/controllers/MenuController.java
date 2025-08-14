@@ -4,6 +4,7 @@ import com.example.menumaker.business.abstracts.*;
 import com.example.menumaker.business.requests.CreateMenuRequest;
 import com.example.menumaker.business.requests.UpdateMenuRequest;
 import com.example.menumaker.business.responses.GetAllMenusResponse;
+import com.example.menumaker.business.responses.GetByIdMenuResponse;
 import com.example.menumaker.business.responses.GetMenu;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,8 +25,7 @@ public class MenuController {
 
     @GetMapping("/getMenu")
     public GetMenu getMenu(){
-        GetMenu menu = new GetMenu(soupService.getSoup(),mainCourseService.getMainCourse(),dessertService.getDessert(),beverageService.getBeverage());
-        return menu;
+        return new GetMenu(soupService.getSoup(),mainCourseService.getMainCourse(),dessertService.getDessert(),beverageService.getBeverage());
     }
 
     @GetMapping("/getmenus")
@@ -43,5 +43,10 @@ public class MenuController {
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     public void updateMenu(UpdateMenuRequest updateMenuRequest){
         this.menuService.updateMenu(updateMenuRequest);
+    }
+
+    @GetMapping("/favmenu/{id}")
+    public List<GetByIdMenuResponse> getByIdMenuResponses(@PathVariable int id){
+        return this.menuService.getMenuById(id);
     }
 }

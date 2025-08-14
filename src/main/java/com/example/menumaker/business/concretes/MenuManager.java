@@ -22,9 +22,8 @@ public class MenuManager implements MenuService {
 
     @Override
     public List<GetAllMenusResponse> getMenus() {
-        List<GetAllMenusResponse> menus = this.menuRepository.findAll().stream().map(menu ->
+        return this.menuRepository.findAll().stream().map(menu ->
                 this.modelMapperService.forResponse().map(menu,GetAllMenusResponse.class)).toList();
-        return menus;
     }
 
     @Override
@@ -41,8 +40,7 @@ public class MenuManager implements MenuService {
 
     @Override
     public List<GetByIdMenuResponse> getMenuById(int id) {
-        List<GetByIdMenuResponse> menus = this.menuRepository.findAll().stream().filter(menu->menu.getId()==id).map(menu->
+        return this.menuRepository.findAll().stream().filter(menu->menu.getUser().getId()==id).map(menu->
                 this.modelMapperService.forResponse().map(menu,GetByIdMenuResponse.class)).toList();
-        return menus;
     }
 }
