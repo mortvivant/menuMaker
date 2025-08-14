@@ -17,7 +17,7 @@ public class UserController {
 
     @PostMapping("/adduser")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public ResponseEntity<?> addUser(CreateUserRequest createUserRequest){
+    public ResponseEntity<?> addUser(@RequestBody CreateUserRequest createUserRequest){
         return this.userService.addUser(createUserRequest);
     }
 

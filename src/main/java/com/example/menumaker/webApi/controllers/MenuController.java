@@ -35,11 +35,11 @@ public class MenuController {
 
     @PostMapping("/savemenu")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void addMenu(CreateMenuRequest createMenuRequest){
+    public void addMenu(@RequestBody CreateMenuRequest createMenuRequest){
         this.menuService.addMenu(createMenuRequest);
     }
 
-    @PutMapping
+    @PutMapping("/updatemenu")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     public void updateMenu(UpdateMenuRequest updateMenuRequest){
         this.menuService.updateMenu(updateMenuRequest);

@@ -2,6 +2,7 @@ package com.example.menumaker.business.concretes;
 
 import com.example.menumaker.business.abstracts.UserService;
 import com.example.menumaker.business.requests.CreateUserRequest;
+import com.example.menumaker.business.requests.UpdateUserRequest;
 import com.example.menumaker.business.requests.UserLogRequest;
 import com.example.menumaker.business.responses.GetUserResponse;
 import com.example.menumaker.business.rules.UserBusinessRules;
@@ -49,6 +50,13 @@ public class UserManager implements UserService {
         GetUserResponse getByRequestUserResponse = this.modelMapperService.forResponse().map(this.userRepository.getReferenceById(id), GetUserResponse.class);
         getByRequestUserResponse.setSuccess(true);
         return getByRequestUserResponse;
+    }
+
+    @Override
+    public ResponseEntity<?> updateUser(UpdateUserRequest updateUserRequest) {
+        User user = this.modelMapperService.forRequest().map(updateUserRequest,User.class);
+        this.userRepository.save(user);
+        return ResponseEntity.ok(true);
     }
 
 }
