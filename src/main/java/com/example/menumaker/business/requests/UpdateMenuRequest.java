@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateMenuRequest {
+public class UpdateMenuRequest {
 
+    private int id;
     private int soup_Id;
     private int maincourse_Id;
     private int dessert_Id;
     private int beverage_Id;
-    private int user_Id;
 }

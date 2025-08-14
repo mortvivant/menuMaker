@@ -15,13 +15,4 @@ public class UserBusinessRules {
             throw new DataIntegrityViolationException("Username already exist.");
         }
     }
-
-    public void checkInvalidLog(boolean invalidLog ){
-        if(invalidLog){
-            throw new RuntimeException("Log is unsuccessful");
-        }
-        else {
-            return;
-        }
-    }
 }
