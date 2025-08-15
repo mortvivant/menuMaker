@@ -30,13 +30,13 @@ public class DessertController {
 
     @PostMapping("/adddessert")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void addDessert(CreateDessertRequest createDessertRequest){
+    public void addDessert(@RequestBody CreateDessertRequest createDessertRequest){
         this.dessertService.addDessert(createDessertRequest);
     }
 
     @PutMapping("/updatedessert")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-    public void updateDessert(UpdateDessertRequest updateDessertRequest){
+    public void updateDessert(@RequestBody UpdateDessertRequest updateDessertRequest){
         this.dessertService.updateDessert(updateDessertRequest);
     }
 }

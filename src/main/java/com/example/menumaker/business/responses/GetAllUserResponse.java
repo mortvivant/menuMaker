@@ -1,4 +1,4 @@
-package com.example.menumaker.business.requests;
+package com.example.menumaker.business.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateUserRequest {
-    private int id;
+public class GetAllUserResponse {
     private String username;
     private String password;
 }

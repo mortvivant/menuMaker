@@ -41,7 +41,7 @@ public class MenuController {
 
     @PutMapping("/updatemenu")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-    public void updateMenu(UpdateMenuRequest updateMenuRequest){
+    public void updateMenu(@RequestBody UpdateMenuRequest updateMenuRequest){
         this.menuService.updateMenu(updateMenuRequest);
     }
 

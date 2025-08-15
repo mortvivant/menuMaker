@@ -30,13 +30,13 @@ public class SoupController {
 
     @PostMapping("/addsoup")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void addSoup(CreateSoupRequest createSoupRequest){
+    public void addSoup(@RequestBody CreateSoupRequest createSoupRequest){
         this.soupService.addSoup(createSoupRequest);
     }
 
     @PutMapping("/updatesoup")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-    public void updateSoup(UpdateSoupRequest updateSoupRequest){
+    public void updateSoup(@RequestBody UpdateSoupRequest updateSoupRequest){
         this.soupService.updateSoup(updateSoupRequest);
     }
 }

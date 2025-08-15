@@ -4,6 +4,7 @@ import com.example.menumaker.business.abstracts.UserService;
 import com.example.menumaker.business.requests.CreateUserRequest;
 import com.example.menumaker.business.requests.UpdateUserRequest;
 import com.example.menumaker.business.requests.UserLogRequest;
+import com.example.menumaker.business.responses.GetAllUserResponse;
 import com.example.menumaker.business.responses.GetUserResponse;
 import com.example.menumaker.business.rules.UserBusinessRules;
 import com.example.menumaker.core.utilities.mappers.ModelMapperService;
@@ -12,6 +13,8 @@ import com.example.menumaker.entities.concretes.User;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -57,6 +60,12 @@ public class UserManager implements UserService {
         User user = this.modelMapperService.forRequest().map(updateUserRequest,User.class);
         this.userRepository.save(user);
         return ResponseEntity.ok(true);
+    }
+
+    @Override
+    public List<GetAllUserResponse> getAllUsers() {
+        return this.userRepository.findAll().stream().filter(user -> user.getId()!=0).map(user ->
+                this.modelMapperService.forResponse().map(user,GetAllUserResponse.class)).toList();
     }
 
 }

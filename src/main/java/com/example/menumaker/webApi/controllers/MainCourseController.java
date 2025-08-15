@@ -30,13 +30,13 @@ public class MainCourseController {
 
     @PostMapping("/addmaincourse")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void addMainCourse(CreateMainCourseRequest createMainCourseRequest){
+    public void addMainCourse(@RequestBody CreateMainCourseRequest createMainCourseRequest){
         this.mainCourseService.addMainCourse(createMainCourseRequest);
     }
 
     @PutMapping("/updatemaincourse")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-    public void updateMainCourse(UpdateMainCourseRequest updateMainCourseRequest){
+    public void updateMainCourse(@RequestBody UpdateMainCourseRequest updateMainCourseRequest){
         this.mainCourseService.updateMainCourse(updateMainCourseRequest);
     }
 }
